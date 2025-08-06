@@ -16,35 +16,27 @@ type Props = {
 function AuthForm({ type }: Props) {
   const isLoginForm = type === "login";
   const router = useRouter();
+  const [isPending, startTransition] = useTransition();
+
   const handleSubmit = async (formData: FormData) => {
     startTransition(async () => {
       const email = formData.get("email") as string;
       const password = formData.get("password") as string;
       let errorMessage;
-      let title;
-      let description;
       if (isLoginForm) {
         errorMessage = (await loginUserAction(email, password)).errorMessage;
-        title = "Logged in";
-        description = "You have been successfully logged in";
       } else {
         errorMessage = (await signUpAction(email, password)).errorMessage;
-        title = "Signed up";
-        description = "Check your email for a confirmation link";
       }
       if (!errorMessage) {
-        toast(title, {
-          description,
-        });
-        router.replace("/");
+        router.replace("/?toastType=${type}");
       } else {
-        toast(title, {
-          description,
+        toast("Error", {
+          description: errorMessage,
         });
       }
     });
   };
-  const [isPending, startTransition] = useTransition();
   return (
     <form action={handleSubmit}>
       <CardContent className="grid w-full items-center gap-4">

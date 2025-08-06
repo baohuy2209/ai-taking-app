@@ -1,9 +1,7 @@
 "use client";
 import React from "react";
 import { Button } from "./ui/button";
-import { useIsMobile } from "@/hooks/use-mobile";
 import { useRouter } from "next/navigation";
-// import {logoutAction} from "";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { logoutAction } from "@/actions/users";

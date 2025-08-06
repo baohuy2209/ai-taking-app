@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SidebarTrigger } from "./ui/sidebar";
-import LogOutButton from "./LogoutButton";
 import DarkModeToggle from "./DarkModeToggle";
 import { shadow } from "@/styles/utils";
 import LogoutButton from "./LogoutButton";
