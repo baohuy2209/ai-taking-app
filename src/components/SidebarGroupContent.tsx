@@ -38,7 +38,7 @@ function SidebarGroupContent({ notes }: Props) {
 
   const deleteNoteLocally = (noteId: string) => {
     setLocalNotes((prevNotes) =>
-      prevNotes.filter((note) => note.id !== noteId),
+      prevNotes.filter((note) => note.id !== noteId)
     );
   };
 

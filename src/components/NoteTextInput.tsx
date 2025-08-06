@@ -1,60 +1,47 @@
 "use client";
 
-import useNote from "@/hooks/useNote";
-import { Note } from "@prisma/client";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { SidebarMenuButton } from "./ui/sidebar";
-import Link from "next/link";
+import { Textarea } from "./ui/textarea";
+import { ChangeEvent, useEffect } from "react";
+import useNote from "@/hooks/useNote";
+import { updateNoteAction } from "@/actions/notes";
 
 type Props = {
-  note: Note;
+  noteId: string;
+  startingNoteText: string;
 };
 
-function SelectNoteButton({ note }: Props) {
-  const noteId = useSearchParams().get("noteId") || "";
+let updateTimeout: NodeJS.Timeout;
 
-  const { noteText: selectedNoteText } = useNote();
-  const [shouldUseGlobalNoteText, setShouldUseGlobalNoteText] = useState(false);
-  const [localNoteText, setLocalNoteText] = useState(note.content);
-
-  useEffect(() => {
-    if (noteId === note.id) {
-      setShouldUseGlobalNoteText(true);
-    } else {
-      setShouldUseGlobalNoteText(false);
-    }
-  }, [noteId, note.id]);
+function NoteTextInput({ noteId, startingNoteText }: Props) {
+  const noteIdParam = useSearchParams().get("noteId") || "";
+  const { noteText, setNoteText } = useNote();
 
   useEffect(() => {
-    if (shouldUseGlobalNoteText) {
-      setLocalNoteText(selectedNoteText);
+    if (noteIdParam === noteId) {
+      setNoteText(startingNoteText);
     }
-  }, [selectedNoteText, shouldUseGlobalNoteText]);
+  }, [startingNoteText, noteIdParam, noteId, setNoteText]);
 
-  const blankNoteText = "EMPTY NOTE";
-  let noteText = localNoteText || blankNoteText;
-  if (shouldUseGlobalNoteText) {
-    noteText = selectedNoteText || blankNoteText;
-  }
+  const handleUpdateNote = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    const text = e.target.value;
+
+    setNoteText(text);
+
+    clearTimeout(updateTimeout);
+    updateTimeout = setTimeout(() => {
+      updateNoteAction(noteId, text);
+    }, 1500);
+  };
 
   return (
-    <SidebarMenuButton
-      asChild
-      className={`items-start gap-0 pr-12 ${
-        note.id === noteId && "bg-sidebar-accent/50"
-      }`}
-    >
-      <Link href={`/?noteId=${note.id}`} className="flex h-fit flex-col">
-        <p className="w-full overflow-hidden truncate text-ellipsis whitespace-nowrap">
-          {noteText}
-        </p>
-        <p className="text-muted-foreground text-xs">
-          {note.updateAt.toLocaleDateString()}
-        </p>
-      </Link>
-    </SidebarMenuButton>
+    <Textarea
+      value={noteText}
+      onChange={handleUpdateNote}
+      placeholder="Type your notes here.."
+      className="custom-scrollbar mb-4 h-full max-w-4xl resize-none border p-4 placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0"
+    />
   );
 }
 
-export default SelectNoteButton;
+export default NoteTextInput;
