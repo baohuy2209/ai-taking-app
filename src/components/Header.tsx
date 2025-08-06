@@ -6,8 +6,9 @@ import DarkModeToggle from "./DarkModeToggle";
 import { shadow } from "@/styles/utils";
 import LogoutButton from "./LogoutButton";
 import { Button } from "./ui/button";
-export default function Header() {
-  const isLogin = true;
+import { getUser } from "@/auth/server";
+export default async function Header() {
+  const user = await getUser();
   return (
     <header
       className="bg-popover relative flex h-24 w-full items-center justify-between px-3 sm:px-8"
@@ -28,7 +29,7 @@ export default function Header() {
         </h1>
       </Link>
       <div className="flex gap-4">
-        {isLogin ? (
+        {user ? (
           <LogoutButton />
         ) : (
           <>
@@ -37,7 +38,7 @@ export default function Header() {
                 Sign up
               </Link>
             </Button>
-            <Button>
+            <Button asChild variant="outline">
               <Link href="/login">Login</Link>
             </Button>
           </>
