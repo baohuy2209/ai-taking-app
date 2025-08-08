@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Project Title
 
-First, run the development server:
+ Full Stack AI Note Taking App with Next.js and Supabase. 
 
+
+
+## Acknowledgements
+
+ This project wouldn't be possible without the support and inspiration from the following:
+
+- 🤖 [OpenAI](https://openai.com) – for providing powerful language models that enable natural language understanding and summarization.
+- 📝 [Windsurf Editor](https://windsurf.com/editor) – for building a customizable, collaborative editor used in our note interface.
+- ⚡ [Vercel](https://vercel.com) – for seamless frontend deployment and hosting.
+- 📦 [Supabase](https://supabase.com) – for handling user authentication and real-time database support.
+
+Special thanks to the open-source community for providing countless tools, templates, and knowledge that helped shape this project.
+
+## Authors
+
+- [@baohuy2209](https://github.com/baohuy2209)
+
+
+## Demo
+
+![DEMO web](public/image.png)
+
+## Features
+
+- 📝AI Note Summarization
+Automatically summarizes long notes into concise bullet points.
+Works with manually typed content or imported files.
+- 💡AI-Powered Suggestions
+Smart suggestions based on the current context of your notes.
+- 🔐User Authentication & Real-Time Sync
+Secure login system using Supabase or Firebase.
+- 🌗Modern UI with Dark/Light Mode
+Clean, responsive interface with support for dark and light themes.
+
+
+
+
+## 🚀 About Me
+🛠️ I'm currently working on  
+Building scalable web applications, implementing automated workflows, and exploring AI model training for real-world applications.
+
+🤝 I'm looking to collaborate on  
+Fullstack development projects, custom website designs, blockchain solutions, or anything involving automation with tools like UI Path, n8n, Make, and Zapier.
+
+🆘 I'm looking for help with  
+Scaling AI training infrastructure, optimizing low-code automation pipelines, and exploring advanced use cases in blockchain integrations.
+
+🌱 I'm currently learning  
+Advanced data analytics with Python and AI model fine-tuning using real-world datasets.
+
+💡 Ask me about  
+Freelancing in tech, setting up complex workflow automations, building AI-ready pipelines, or deploying fullstack apps from scratch.
+
+⚡ Fun fact  
+I love breaking down complex tech into simple, useful solutions—and I automate everything I can, including coffee reminders ☕⚙️.
+
+
+## 🛠 Skills
+Javascript, HTML, CSS, Nextjs, React Hooks, Supabase
+
+
+## Installation
+Firstly, you need clone this project to local computer: 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/baohuy2209/ai-taking-app.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Install my-project with pnpm
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+cd ai-taking-app
+pnpm install
+```
+Then, run project with command 
+```bash
+pnpm run dev
+```
+    
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Client:** React, TailwindCSS, Nextjs, React Custom Hook, react-markdown
 
-## Learn More
+**Server:** Supabase, Nextjs
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Support
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+For support, email huynguyen002311@gmail.com or contact me by Zalo [0375686583].
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
